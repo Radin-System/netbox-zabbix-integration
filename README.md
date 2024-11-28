@@ -1,0 +1,1 @@
+# Netbox Zabbix Integration Plugin
