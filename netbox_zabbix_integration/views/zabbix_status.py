@@ -27,7 +27,6 @@ class ZabbixStatusView(View):
             zapi = ZabbixAPIManager.get_instance()
             api_version = str(zapi.api_version())
             connection_status = 'Online'
-            zapi.login()
         except Exception as e:
             connection_status = 'Offline'
             error_message = str(e)

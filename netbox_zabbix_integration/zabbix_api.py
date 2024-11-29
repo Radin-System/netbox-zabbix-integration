@@ -1,8 +1,5 @@
 from zabbix_utils import ZabbixAPI
 from netbox.plugins import get_plugin_config
-import logging
-
-logger = logging.getLogger('netbox.plugins.zabbix_integration')
 
 class ZabbixAPIManager:
     _instance = None
@@ -21,8 +18,8 @@ class ZabbixAPIManager:
         url = get_plugin_config('netbox_zabbix_integration', 'url')
         verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
         token = get_plugin_config('netbox_zabbix_integration', 'token')
-        username = get_plugin_config('netbox_zabbix_integration', 'password')
-        password = get_plugin_config('netbox_zabbix_integration', 'username')
+        username = get_plugin_config('netbox_zabbix_integration', 'username')
+        password = get_plugin_config('netbox_zabbix_integration', 'password')
 
         try:
             # Create and authenticate the ZabbixAPI object
@@ -42,10 +39,8 @@ class ZabbixAPIManager:
                     timeout=10,
                     )
 
-            logger.info("Successfully connected to Zabbix API.")
             return zapi
         except Exception as e:
-            logger.error(f"Failed to connect to Zabbix API: {e}")
             raise
 
     @classmethod
