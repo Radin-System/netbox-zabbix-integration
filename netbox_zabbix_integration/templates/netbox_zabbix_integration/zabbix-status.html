@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <th scope="row">Authentication Method</th>
-            <td>{%- if auth_mode == "Token" -%}Token - *****{%- elseif auth_mode == "Usermode" -%}Usermode - {{ username }}{%- endif -%}</td>
+            <td>{% if auth_mode == "Token" %}Token - *****{% elif auth_mode == "Usermode" %}Usermode - {{ username }}{% endif %}</td>
           </tr>
           <tr>
             <th scope="row">API Version</th>
@@ -27,12 +27,12 @@
             <th scope="row">Status</th>
             <td>{{ connection_status }}</td>
           </tr>
-          {%- if error_message != None -%}
+          {% if error_message != None %}
           <tr>
             <th scope="row">Error Message</th>
             <td>{{ error_message }}</td>
           </tr>
-          {%- endif -%}
+          {% endif %}
         </table>
       </div>
     </div>
