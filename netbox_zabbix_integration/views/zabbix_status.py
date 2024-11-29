@@ -7,9 +7,9 @@ class ZabbixStatusView(MediaView):
 
     def get(self, request, *args, **kwargs):
         # Retrieve configuration settings
-        zabbix_url = get_plugin_config('zabbix_integration', 'zabbix_url')
-        zabbix_token = get_plugin_config('zabbix_integration', 'zabbix_token')
-        verify_ssl = get_plugin_config('zabbix_integration', 'verify_ssl')
+        zabbix_url = get_plugin_config('netbox_zabbix_integration', 'zabbix_url')
+        zabbix_token = get_plugin_config('netbox_zabbix_integration', 'zabbix_token')
+        verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
 
         # Test connection (basic example)
         connection_status = "Unknown"
