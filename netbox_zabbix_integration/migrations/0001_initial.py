@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('tags', taggit.managers.TaggableManager(through='extras.TaggedItem', to='extras.Tag')),
             ],
             options={
-                'db_table': 'reletionship',
+                'db_table': 'relationship',
                 'ordering': ('content_type', 'status'),
             },
         ),
