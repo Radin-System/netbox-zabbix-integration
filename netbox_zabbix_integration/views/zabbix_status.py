@@ -22,4 +22,4 @@ class ZabbixStatusView(View):
             'connection_status': connection_status,
             'error_message': error_message,
         }
-        return render(request, context)
+        return render(request, self.template_name, context)
