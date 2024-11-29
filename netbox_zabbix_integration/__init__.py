@@ -1,4 +1,4 @@
-from netbox.plugins import PluginConfig, register_menu_items
+from netbox.plugins import PluginConfig
 
 class NetboxZabbixIntegrationConfig(PluginConfig):
     name = 'netbox_zabbix_integration'
