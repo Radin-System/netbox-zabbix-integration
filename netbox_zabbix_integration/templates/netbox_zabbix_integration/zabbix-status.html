@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row mb-3">
-  <div class="col col-md-6">
+  <div class="col col-md-8">
     <div class="card">
       <h5 class="card-header">Zabbix Status</h5>
       <div class="card-body">
@@ -10,6 +10,10 @@
           <tr>
             <th scope="row">URL</th>
             <td>{{ zabbix_url }}</td>
+          </tr>
+          <tr>
+            <th scope="row">SSL Verification Mode</th>
+            <td>{{ verify_ssl }}</td>
           </tr>
           <tr>
             <th scope="row">Status</th>
@@ -20,6 +24,13 @@
             <td>{{ error_message }}</td>
           </tr>
         </table>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <a href="{{ zabbix_url }}"><img class="img-fluid" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/zabbix_logo_icon_167937.png"></a>
       </div>
     </div>
   </div>

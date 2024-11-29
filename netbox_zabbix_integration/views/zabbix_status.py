@@ -8,8 +8,8 @@ class ZabbixStatusView(View):
 
     def get(self, request, *args, **kwargs):
         # Retrieve configuration settings
-        zabbix_url = get_plugin_config('netbox_zabbix_integration', 'zabbix_url')
-        zabbix_token = get_plugin_config('netbox_zabbix_integration', 'zabbix_token')
+        zabbix_url = get_plugin_config('netbox_zabbix_integration', 'url')
+        zabbix_token = get_plugin_config('netbox_zabbix_integration', 'token')
         verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
 
         # Test connection (basic example)
@@ -19,7 +19,9 @@ class ZabbixStatusView(View):
         # Context for rendering the template
         context = {
             'zabbix_url': zabbix_url,
+            'verify_ssl': verify_ssl,
             'connection_status': connection_status,
             'error_message': error_message,
+
         }
         return render(request, self.template_name, context)
