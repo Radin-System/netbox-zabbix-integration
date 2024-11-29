@@ -4,8 +4,8 @@ from netbox.plugins import PluginConfig, get_plugin_config
 from .validation import validate_url, validate_authentication, validate_bool
 from .zabbix_api import ZabbixAPIManager
 
-class ZabbixIntegrationConfig(PluginConfig):
-    name = 'zabbix_integration'
+class NetboxZabbixIntegrationConfig(PluginConfig):
+    name = 'netbox_zabbix_integration'
     verbose_name = 'Zabbix Integration'
     description = 'For Integration between Netbox and Zabbix'
     author = 'radin system'
@@ -68,4 +68,4 @@ class ZabbixIntegrationConfig(PluginConfig):
         except:
             self.startup_zabbix_connection = False
 
-config = ZabbixIntegrationConfig
+config = NetboxZabbixIntegrationConfig
