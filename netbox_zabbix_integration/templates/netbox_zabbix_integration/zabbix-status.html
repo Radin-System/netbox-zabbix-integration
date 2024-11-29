@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <th scope="row">Authentication Method</th>
-            <td>{{ auth_mode }}</td>
+            <td>{%- if auth_mode == "Token" -%}Token - *****{%- elseif auth_mode == "Usermode" -%}Usermode - {{ username }}{%- endif -%}</td>
           </tr>
           <tr>
             <th scope="row">API Version</th>

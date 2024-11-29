@@ -10,10 +10,11 @@ class ZabbixStatusView(View):
     def get(self, request, *args, **kwargs):
         # Retrieve configuration settings
         url = get_plugin_config('netbox_zabbix_integration', 'url')
-        token = get_plugin_config('netbox_zabbix_integration', 'token')
         verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
+        token = get_plugin_config('netbox_zabbix_integration', 'token')
         username = get_plugin_config('netbox_zabbix_integration', 'username')
         connection_status = "Unknown"
+        api_version = None
         error_message = None
         auth_mode = 'UNKHOWN'
 
