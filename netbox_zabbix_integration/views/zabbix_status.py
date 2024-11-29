@@ -1,8 +1,9 @@
 # views.py
-from netbox.views import MediaView
+from django.views.generic import View
 from netbox.plugins import get_plugin_config
+from django.shortcuts import render
 
-class ZabbixStatusView(MediaView):
+class ZabbixStatusView(View):
     template_name = 'netbox_zabbix_integration/zabbix-status.html'
 
     def get(self, request, *args, **kwargs):
@@ -21,4 +22,4 @@ class ZabbixStatusView(MediaView):
             'connection_status': connection_status,
             'error_message': error_message,
         }
-        return self.render(request, context)
+        return render(request, context)
