@@ -69,6 +69,7 @@ class Relationship(NetBoxModel):
     class Meta:
         db_table = 'reletionship'
         ordering = ('content_type', 'status')
+        default_views = False
 
     def get_status_color(self):
         return RelationshipStatusChoices.colors.get(self.status)
