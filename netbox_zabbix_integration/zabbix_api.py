@@ -26,14 +26,22 @@ class ZabbixAPIManager:
 
         try:
             # Create and authenticate the ZabbixAPI object
-            zapi = ZabbixAPI(
-                url=url if not None else None,
-                validate_certs=verify_ssl if not None else None,
-                token=token if not None else None,
-                user=username if not None else None, 
-                password=password if not None else None,
-                timeout=10,
-                )
+            if token:
+                zapi = ZabbixAPI(
+                    url=url,
+                    validate_certs=verify_ssl,
+                    token=token,
+                    timeout=10,
+                    )
+            else:
+                zapi = ZabbixAPI(
+                    url=url,
+                    validate_certs=verify_ssl,
+                    user=username,
+                    password=password,
+                    timeout=10,
+                    )
+
             logger.info("Successfully connected to Zabbix API.")
             return zapi
         except Exception as e:
