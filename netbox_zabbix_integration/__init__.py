@@ -1,5 +1,4 @@
 from netbox.plugins import PluginConfig, register_menu_items
-from netbox_zabbix_integration.plugin_hooks import add_sync_button
 
 class NetboxZabbixIntegrationConfig(PluginConfig):
     name = 'netbox_zabbix_integration'
