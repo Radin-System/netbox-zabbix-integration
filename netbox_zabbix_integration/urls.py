@@ -1,17 +1,11 @@
 from django.urls import path
 from netbox.views.generic import ObjectChangeLogView
-
 from . import models, views
 
 urlpatterns = (
-    path('zabbix-intgration/', views.ZabbixReletionshipListView.as_view(), name='zabbix_reletaionship_list'),
-    path('zabbix-intgration/<int:pk>/', views.ZabbixReletionshipView.as_view(), name='zabbix_reletaionship'),
-)
-
-urlpatterns = (
-    # Zabbix ReletaionShip
-    # ...
-    path('zabbix-intgration/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='zabbix_reletaionship_changelog', kwargs={
+    path('zabbix-integration/', views.ZabbixRelationshipListView.as_view(), name='zabbix_relationship_list'),
+    path('zabbix-integration/<int:pk>/', views.ZabbixRelationshipView.as_view(), name='zabbix_relationship'),
+    path('zabbix-integration/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='zabbix_relationship_changelog', kwargs={
         'model': models.ZabbixRelationship
     }),
 )
