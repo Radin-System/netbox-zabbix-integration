@@ -6,4 +6,4 @@ class RelationshipView(generic.ObjectView):
 
 class RelationshipListView(generic.ObjectListView):
     queryset = models.Relationship.objects.all()
-    table = tables.ZabbixRelationshipTable
+    table = tables.RelationshipTable
