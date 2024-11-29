@@ -1,12 +1,18 @@
 import django_tables2 as tables
 
-from netbox.tables import NetBoxTable
+from netbox.tables import NetBoxTable, ChoiceFieldColumn
 from netbox_zabbix_integration.models import Relationship
 
 class RelationshipTable(NetBoxTable):
-    assigned_object = tables.Column(
-        linkify=True
+    id = tables.Column(
+        linkify=False,
     )
+
+    assigned_object = tables.Column(
+        linkify=True,
+    )
+
+    status = ChoiceFieldColumn()
 
     class Meta(NetBoxTable.Meta):
         model = Relationship
