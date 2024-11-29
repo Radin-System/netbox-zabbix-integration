@@ -16,6 +16,6 @@ class RelationshipTable(NetBoxTable):
 
     class Meta(NetBoxTable.Meta):
         model = Relationship
-        fields = ('pk', 'id', 'content_type', 'assigned_object', 'zabbix_model', 'zabbix_id', 'zabbix_name', 'status')
+        fields = ('pk', 'id', 'content_type', 'assigned_object', 'zabbix_id', 'zabbix_model', 'zabbix_object', 'status')
         default_columns = ('assigned_object', 'zabbix_model', 'zabbix_name')
         exclude = ('actions',)

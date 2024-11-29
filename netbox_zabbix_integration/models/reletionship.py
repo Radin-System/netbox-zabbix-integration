@@ -29,6 +29,10 @@ class ZabbixModelsChoices(ChoiceSet):
 # Model
 class Relationship(NetBoxModel):
     # Polymorphic relation fields
+    object_id = models.PositiveIntegerField(
+        verbose_name='Object ID',
+    )
+
     content_type = models.ForeignKey(
         ContentType,
         on_delete=models.PROTECT,
@@ -37,15 +41,18 @@ class Relationship(NetBoxModel):
         },
     )
 
-    object_id = models.PositiveIntegerField(
-        verbose_name='Object ID',
-    )
-
     assigned_object = GenericForeignKey(
         'content_type',
         'object_id',
     )
     assigned_object.verbose_name = 'Assigned Object'
+
+    zabbix_id = models.PositiveIntegerField(
+        verbose_name='Zabbix ID',
+        unique=True,
+        blank=False,
+        null=False,
+    )
 
     zabbix_model = models.CharField(
         verbose_name='Zabbix Model',
@@ -55,15 +62,8 @@ class Relationship(NetBoxModel):
         null=False,
     )
 
-    zabbix_id = models.PositiveIntegerField(
-        verbose_name='Zabbix ID',
-        unique=True,
-        blank=False,
-        null=False,
-    )
-
-    zabbix_name = models.CharField(
-        verbose_name='Zabbix Name',
+    zabbix_object = models.CharField(
+        verbose_name='Zabbix Object',
         max_length=256,
         unique=True,
         blank=False,
@@ -89,7 +89,7 @@ class Relationship(NetBoxModel):
         return ZabbixModelsChoices.colors.get(self.zabbix_model)
 
     def __str__(self):
-        return f'{self.assigned_object} ({self.zabbix_model}) -> {self.zabbix_name}'
+        return f'{self.assigned_object} ({self.zabbix_model}) -> {self.zabbix_object}'
 
     def get_absolute_url(self):
         return reverse('plugins:netbox_zabbix_integration:relationship', args=[self.pk])
