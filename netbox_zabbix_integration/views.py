@@ -7,14 +7,14 @@ from netbox.plugins import get_plugin_config
 import requests
 
 class ZabbixStatusView(TemplateView):
-    template_name = "zabbix_integration/status.html"
+    template_name = "netbox_zabbix_integration/status.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Get plugin configuration
-        zabbix_url = get_plugin_config('zabbix_integration', 'zabbix_url')
-        zabbix_token = get_plugin_config('zabbix_integration', 'zabbix_token')
-        verify_ssl = get_plugin_config('zabbix_integration', 'verify_ssl')
+        zabbix_url = get_plugin_config('netbox_zabbix_integration', 'zabbix_url')
+        zabbix_token = get_plugin_config('netbox_zabbix_integration', 'zabbix_token')
+        verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
 
         # Initialize status details
         connection_status = "Unknown"
