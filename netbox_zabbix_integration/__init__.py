@@ -25,16 +25,12 @@ class NetboxZabbixIntegrationConfig(PluginConfig):
     caching_config = {}
 
     startup_configuration_verify: bool = None
-    startup_zabbix_connection: bool = None
-
-    zabbix_api_version: str = None
 
     def ready(self):
         super().ready()
 
         # Validate configuration
         self.validate_configuration()
-        self.dry_connection_test()
 
     def validate_configuration(self):
         # Get plugin settings
@@ -59,13 +55,5 @@ class NetboxZabbixIntegrationConfig(PluginConfig):
             raise ImproperlyConfigured("Parameter 'verify_ssl' Must Be Instance of Type Boolean. Check the configuration")
         
         self.startup_configuration_verify = True
-
-    def dry_connection_test(self):
-        zabbix_api = ZabbixAPIManager.get_instance()
-        try:
-            self.zabbix_api_version = str(zabbix_api.api_version())
-            self.startup_zabbix_connection = True
-        except:
-            self.startup_zabbix_connection = False
 
 config = NetboxZabbixIntegrationConfig
