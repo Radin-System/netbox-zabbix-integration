@@ -5,7 +5,7 @@ class NetboxZabbixIntegrationConfig(PluginConfig):
     verbose_name = ' Netbox Zabbix Integration'
     description = 'For Integration between Netbox and Zabbix'
     version = '1.0.0'
-    base_url = 'netbox_zabbix-integration'
+    base_url = 'netbox-zabbix-integration'
     author = 'radin system'
     author_email = 'info@rsto.ir'
     required_settings = []
