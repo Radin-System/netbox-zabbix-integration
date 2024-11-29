@@ -36,10 +36,19 @@ class Relationship(NetBoxModel):
             'model__in': ['device', 'tenant', 'site', 'platform']
         },
     )
-    object_id = models.PositiveIntegerField()
-    assigned_object = GenericForeignKey('content_type', 'object_id')
+
+    object_id = models.PositiveIntegerField(
+        verbose_name='Object ID',
+    )
+
+    assigned_object = GenericForeignKey(
+        'content_type',
+        'object_id',
+    )
+    assigned_object.verbose_name = 'Assigned Object'
 
     zabbix_model = models.CharField(
+        verbose_name='Zabbix Model',
         max_length=30,
         choices=ZabbixModelsChoices,
         blank=False,
@@ -47,12 +56,14 @@ class Relationship(NetBoxModel):
     )
 
     zabbix_id = models.PositiveIntegerField(
+        verbose_name='Zabbix ID',
         unique=True,
         blank=False,
         null=False,
     )
 
     zabbix_name = models.CharField(
+        verbose_name='Zabbix Name',
         max_length=256,
         unique=True,
         blank=False,
@@ -60,6 +71,7 @@ class Relationship(NetBoxModel):
     )
 
     status = models.CharField(
+        verbose_name='Status',
         max_length=30,
         choices=RelationshipStatusChoices,
         blank=False,
@@ -68,7 +80,7 @@ class Relationship(NetBoxModel):
 
     class Meta:
         db_table = 'relationship'
-        ordering = ('content_type', 'status')
+        ordering = ('content_type', 'assigned_object')
 
     def get_status_color(self):
         return RelationshipStatusChoices.colors.get(self.status)
