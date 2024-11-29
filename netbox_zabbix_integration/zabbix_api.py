@@ -18,11 +18,11 @@ class ZabbixAPIManager:
     def _create_instance(cls):
         """Create a new ZabbixAPI instance and authenticate."""
         # Get plugin configuration
-        url = get_plugin_config('zabbix_integration', 'url')
-        verify_ssl = get_plugin_config('zabbix_integration', 'verify_ssl')
-        token = get_plugin_config('zabbix_integration', 'token')
-        username = get_plugin_config('zabbix_integration', 'password')
-        password = get_plugin_config('zabbix_integration', 'username')
+        url = get_plugin_config('netbox_zabbix_integration', 'url')
+        verify_ssl = get_plugin_config('netbox_zabbix_integration', 'verify_ssl')
+        token = get_plugin_config('netbox_zabbix_integration', 'token')
+        username = get_plugin_config('netbox_zabbix_integration', 'password')
+        password = get_plugin_config('netbox_zabbix_integration', 'username')
 
         try:
             # Create and authenticate the ZabbixAPI object
