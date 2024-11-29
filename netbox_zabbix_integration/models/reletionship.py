@@ -67,6 +67,7 @@ class ZabbixRelationship(NetBoxModel):
     )
 
     class Meta:
+        db_table = 'zabbix_reletionship'
         ordering = ('content_type', 'status')
 
     def get_status_color(self):
