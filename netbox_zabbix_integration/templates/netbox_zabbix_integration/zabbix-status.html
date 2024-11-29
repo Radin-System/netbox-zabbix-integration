@@ -1,39 +1,27 @@
 {% extends 'generic/_base.html' %}
 
 {% block content %}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Zabbix Integration Status</h3>
-    </div>
-    <div class="panel-body">
-        <p><strong>Zabbix URL:</strong> {{ zabbix_url }}</p>
-        <p><strong>Connection Status:</strong> {{ connection_status }}</p>
-        {% if error_message %}
-        <p><strong>Error Message:</strong> {{ error_message }}</p>
-        {% endif %}
-    </div>
-</div>
-  <div class="row mb-3">
-    <div class="col col-md-6">
-      <div class="card">
-        <h5 class="card-header">Zabbix Relationship</h5>
-        <div class="card-body">
-          <table class="table table-hover attr-table">
-            <tr>
-              <th scope="row">Name</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Status</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">Zabbix Object</th>
-              <td></td>
-            </tr>
-          </table>
-        </div>
+<div class="row mb-3">
+  <div class="col col-md-6">
+    <div class="card">
+      <h5 class="card-header">Zabbix Status</h5>
+      <div class="card-body">
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">URL</th>
+            <td>{{ zabbix_url }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Status</th>
+            <td>{{ connection_status }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Error Message</th>
+            <td>{{ error_message }}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
+</div>
 {% endblock content %}
