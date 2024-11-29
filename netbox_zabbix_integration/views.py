@@ -1,16 +1,16 @@
 from netbox.views import generic
 from . import models, tables, forms
 
-class ZabbixRelationshipView(generic.ObjectView):
-    queryset = models.ZabbixRelationship.objects.all()
+class RelationshipView(generic.ObjectView):
+    queryset = models.Relationship.objects.all()
 
-class ZabbixRelationshipListView(generic.ObjectListView):
-    queryset = models.ZabbixRelationship.objects.all()
+class RelationshipListView(generic.ObjectListView):
+    queryset = models.Relationship.objects.all()
     table = tables.ZabbixRelationshipTable
 
-class ZabbixRelationshipEditView(generic.ObjectEditView):
-    queryset = models.ZabbixRelationship.objects.all()
-    form = forms.ZabbixRelationshipForm
+class RelationshipEditView(generic.ObjectEditView):
+    queryset = models.Relationship.objects.all()
+    form = forms.RelationshipForm
 
-class ZabbixRelationshipDeleteView(generic.ObjectDeleteView):
-    queryset = models.ZabbixRelationship.objects.all()
+class RelationshipDeleteView(generic.ObjectDeleteView):
+    queryset = models.Relationship.objects.all()

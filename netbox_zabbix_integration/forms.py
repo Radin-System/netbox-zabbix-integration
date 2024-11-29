@@ -1,8 +1,8 @@
 from netbox.forms import NetBoxModelForm
-from .models import ZabbixRelationship
+from .models import Relationship
 
-class ZabbixRelationshipForm(NetBoxModelForm):
+class RelationshipForm(NetBoxModelForm):
 
     class Meta:
-        model = ZabbixRelationship
+        model = Relationship
         fields = ()

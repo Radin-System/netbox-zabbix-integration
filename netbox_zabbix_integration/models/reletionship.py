@@ -27,7 +27,7 @@ class ZabbixModelsChoices(ChoiceSet):
     ]
 
 # Model
-class ZabbixRelationship(NetBoxModel):
+class Relationship(NetBoxModel):
     # Polymorphic relation fields
     content_type = models.ForeignKey(
         ContentType,
@@ -67,7 +67,7 @@ class ZabbixRelationship(NetBoxModel):
     )
 
     class Meta:
-        db_table = 'zabbix_reletionship'
+        db_table = 'reletionship'
         ordering = ('content_type', 'status')
 
     def get_status_color(self):
@@ -80,4 +80,4 @@ class ZabbixRelationship(NetBoxModel):
         return f'{self.assigned_object} ({self.zabbix_model}) -> {self.zabbix_name}'
 
     def get_absolute_url(self):
-        return reverse('plugins:zabbix_integration:zabbix_reletionship', args=[self.pk])
+        return reverse('plugins:zabbix_integration:reletionship', args=[self.pk])
