@@ -27,6 +27,8 @@ class ZabbixIntegrationConfig(PluginConfig):
     startup_configuration_verify: bool = None
     startup_zabbix_connection: bool = None
 
+    zabbix_api_version: str = None
+
     def ready(self):
         super().ready()
 
@@ -60,5 +62,10 @@ class ZabbixIntegrationConfig(PluginConfig):
 
     def dry_connection_test(self):
         zabbix_api = ZabbixAPIManager.get_instance()
+        try:
+            self.zabbix_api_version = str(zabbix_api.api_version())
+            self.startup_zabbix_connection = True
+        except:
+            self.startup_zabbix_connection = False
 
 config = ZabbixIntegrationConfig
