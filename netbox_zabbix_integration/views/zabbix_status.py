@@ -41,3 +41,7 @@ class ZabbixStatusView(View):
             'api_version': api_version,
         }
         return render(request, self.template_name, context)
+
+__all__ = [
+    'ZabbixStatusView',
+]

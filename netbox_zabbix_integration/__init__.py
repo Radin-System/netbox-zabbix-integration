@@ -2,7 +2,6 @@ from django.core.exceptions import ImproperlyConfigured
 from netbox.plugins import PluginConfig, get_plugin_config
 
 from .validation import validate_url, validate_authentication, validate_bool
-from .zabbix_api import ZabbixAPIManager
 
 class NetboxZabbixIntegrationConfig(PluginConfig):
     name = 'netbox_zabbix_integration'

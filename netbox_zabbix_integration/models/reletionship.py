@@ -93,3 +93,7 @@ class Relationship(NetBoxModel):
 
     def get_absolute_url(self):
         return reverse('plugins:netbox_zabbix_integration:relationship', args=[self.pk])
+
+__all__ = [
+    'Relationship',
+]

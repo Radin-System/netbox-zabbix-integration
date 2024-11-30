@@ -7,3 +7,8 @@ class RelationshipView(generic.ObjectView):
 class RelationshipListView(generic.ObjectListView):
     queryset = models.Relationship.objects.all()
     table = tables.RelationshipTable
+
+__all__ = [
+    'RelationshipView',
+    'RelationshipListView',
+]
