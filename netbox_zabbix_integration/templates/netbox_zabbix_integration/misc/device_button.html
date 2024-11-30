@@ -1,0 +1,8 @@
+{% extends "dcim/device.html" %}
+
+{% block content_right %}
+    {{ block.super }}
+    <a href="{% url 'plugins:netbox_zabbix_integration:object_sync' model='device' id=object.id %}" class="btn btn-primary">
+        Sync Device
+    </a>
+{% endblock %}

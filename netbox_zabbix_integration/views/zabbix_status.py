@@ -5,7 +5,7 @@ from django.shortcuts import render
 from netbox_zabbix_integration.zabbix_api import ZabbixAPIManager
 
 class ZabbixStatusView(View):
-    template_name = 'netbox_zabbix_integration/zabbix-status.html'
+    template_name = 'netbox_zabbix_integration/zabbix_status.html'
 
     def get(self, request, *args, **kwargs):
         # Retrieve configuration settings

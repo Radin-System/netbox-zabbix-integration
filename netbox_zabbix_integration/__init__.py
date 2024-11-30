@@ -2,6 +2,7 @@ from django.core.exceptions import ImproperlyConfigured
 from netbox.plugins import PluginConfig, get_plugin_config
 
 from .validation import validate_url, validate_authentication, validate_bool
+from .extensions import DeviceSyncButton
 
 class NetboxZabbixIntegrationConfig(PluginConfig):
     name = 'netbox_zabbix_integration'
@@ -22,8 +23,7 @@ class NetboxZabbixIntegrationConfig(PluginConfig):
         'password': None,
     }
     caching_config = {}
-
-    startup_configuration_verify: bool = None
+    template_extensions = [DeviceSyncButton,]
 
     def ready(self):
         super().ready()
@@ -41,18 +41,13 @@ class NetboxZabbixIntegrationConfig(PluginConfig):
 
         # Validate zabbix_url
         if not validate_url(url):
-            self.startup_configuration_verify = False
             raise ImproperlyConfigured(f"Invalid Zabbix URL '{url}'. Check the configuration")
 
         # Validate zabbix_token
         if not validate_authentication(token, username, password):
-            self.startup_configuration_verify = False
             raise ImproperlyConfigured("Invalid Zabbix Authentication Method. Check the configuration")
 
         if not validate_bool(verify_ssl):
-            self.startup_configuration_verify = False
             raise ImproperlyConfigured("Parameter 'verify_ssl' Must Be Instance of Type Boolean. Check the configuration")
-        
-        self.startup_configuration_verify = True
 
 config = NetboxZabbixIntegrationConfig
